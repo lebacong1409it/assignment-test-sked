@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>lebacong1409it@gmail.com</contactEmail>
+    <label>Test REST API</label>
+    <oauthConfig>
+        <callbackUrl>https://skedulo86-dev-ed.lightning.force.com/</callbackUrl>
+        <consumerKey>3MVG9wt4IL4O5wvKAW9G7DREU8WAQYM7D9Bs9cndSGfLvnoLYOG6xE3cOyl9VrzFl8WkKUqhVFaC30hclqgHK</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <scopes>Basic</scopes>
+        <scopes>Api</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+</ConnectedApp>
