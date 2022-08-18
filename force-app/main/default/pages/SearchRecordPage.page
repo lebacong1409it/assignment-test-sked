@@ -1,0 +1,20 @@
+<apex:page Controller="SearchRecordController">
+    <apex:pageBlock title="Task 2 - Search Accounts and Contacts">
+        <apex:pageMessages></apex:pageMessages>
+        <apex:form >
+            <apex:inputText value="{!searchKey}" label="Search key"/>
+            <apex:commandButton value="Search" action="{!searchByName}"/>
+            <br/><br/>
+            <apex:outputText style="font-style:italic" value="Total records: {!searchResults.size}"></apex:outputText>
+            <apex:pageBlock title="Search Result">
+                <apex:pageBlockTable value="{!searchResults}" var="record">
+                    <apex:column headerValue="Record Name" value="{!record.name}"/>
+                    <apex:column headerValue="Record Type" value="{!record.sobjectName}"/>
+                    <apex:column headerValue="Click to open">
+                        <apex:outputlink target="_blank" value="{!record.link}">View</apex:outputlink>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlock>
+        </apex:form>
+    </apex:pageBlock>
+</apex:page>

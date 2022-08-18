@@ -1,0 +1,37 @@
+<apex:page Controller="SearchRecordController">
+    <apex:pageBlock title="Task 3 - Search Accounts and Contacts">
+        <apex:pageMessages></apex:pageMessages>
+        <apex:form >
+            <apex:inputText value="{!searchKey}" label="Search key"/>
+            <apex:commandButton value="Search" action="{!searchByName}"/>
+            <br/><br/>
+            <apex:outputText style="font-style:italic" value="Total records: {!searchResults.size}"></apex:outputText>
+            <apex:pageBlock title="Search Result" id="tableResult">
+                <apex:pageBlockTable value="{!searchResults}" var="record">
+                    <apex:column headerValue="Record Name" value="{!record.name}"/>
+                    <apex:column headerValue="Record Type" value="{!record.sobjectName}"/>
+                    <apex:column headerValue="Counter" value="{!record.counter}" styleClass="{!record.id}" />
+                    <apex:column headerValue="Click to update counter">
+                        <a href="javascript:void(0)" onclick="incrementCounter('{!record.id}')">Increment Counter</a>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlock>
+        </apex:form>
+    </apex:pageBlock>
+
+    <script type="text/javascript">
+        function incrementCounter(id) {
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.SearchRecordController.incrementCounterRecord}',
+                id,
+                function(result, event){
+                    if (event.status) {
+                        document.getElementsByClassName(id)[0].innerHTML = result;
+                    } else {
+                        console.log(event.message);
+                    }
+                }, 
+            );
+        }
+    </script>
+</apex:page>
